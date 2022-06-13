@@ -51,6 +51,10 @@ body {
   font-family: 'Red Hat Text', sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
 h1, h2, h3 {
   font-family: 'Red Hat Display', sans-serif;
   color: #082629;
@@ -104,9 +108,18 @@ img {
   margin: 100px 10% 0;
 }
 
+#top{
+  position: relative;
+  margin: auto;
+  max-width: 1440px;
+}
+
 .top-section {
   background-color: rgba(129, 198, 191, 0.25);
   height: 525px;
+  /* position: relative;
+  margin: auto;
+  max-width: 1440px; */
 }
 
 .top-section-header {
@@ -152,21 +165,11 @@ img {
 .top-section-tittle .social-icons li {
   margin-right: 50px;
   margin-bottom: 25px;
+  text-align: right;
 }
 
 .top-section-tittle .social-icons li img {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header .main-menu {
-  display: none;
+  max-width: none;
 }
 
 .top-section-down {
@@ -174,12 +177,20 @@ img {
   margin-top: 100px;
 }
 
+.top-section-down img{
+  transition: 3s;
+}
+
+.top-section-down img:hover{
+  scale:(1.5);
+}
+
 .top-section-box-left img {
   position: absolute;
-  left: 3.3%;
-  top: 220px;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  left: -100px;
+  top: 125px;
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
   animation-duration: 15s;
   animation-iteration-count: infinite;
   animation-name: slideUpDown;
@@ -201,8 +212,8 @@ img {
 
 .top-section-box-right img {
   position: absolute;
-  right: 5.5%;
-  top: 475px;
+  right: -70px;
+  top: 375px;
   -webkit-animation: spin 30s linear infinite;
   -moz-animation: spin 30s linear infinite;
   animation: spin 30s linear infinite;
@@ -230,8 +241,8 @@ img {
 
 .top-section-box-bottom img {
   position: absolute;
-  left: 3.3%;
-  top: 575px;
+  left: -100px;
+  top: 475px;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   animation-duration: 15s;
@@ -253,6 +264,35 @@ img {
   }
 }
 
+@media only screen and (max-width:800px){
+  .top-section-tittle .void {
+      }
+
+  .top-section-tittle .tittle {
+    text-align: left;
+      }
+
+      .top-section-box-right img {
+        position: absolute;
+        right: -70px;
+        top: 375px;
+        width:150px;
+        height: 150px;
+
+        -webkit-animation: spin 30s linear infinite;
+        -moz-animation: spin 30s linear infinite;
+        animation: spin 30s linear infinite;
+        animation-name: spinUpDown;
+      }
+
+}
+
+#about-me {
+  position: relative;
+  margin: auto;
+  max-width: 1440px;
+}
+
 .about-me-wrapper {
   display: flex;
   margin-top: 100px;
@@ -271,14 +311,33 @@ img {
   position: absolute;
 }
 
+@media only screen and (max-width:800px){
+  /* for tablets */
+
+  .about-me-wrapper {
+    flex-direction: column;
+
+  }
+
+  .about-me-wrapper .about-me-left .one,
+  .about-me-wrapper .about-me-left .two {
+    position: relative;
+  }
+
+  .top-section-box-right img,
+  .top-section-box-bottom img {
+    display:none;
+  }
+}
+
 .about-me-wrapper .about-me-left .one {
-  top: 50px;
-  left: 100px;
+  top: 155px;
+  left: 300px;
 }
 
 .about-me-wrapper .about-me-left .two {
-  top: 155px;
-  left: 300px;
+  top: 50px;
+  left: 100px;
 }
 
 .about-me-wrapper .about-me-right {
@@ -298,4 +357,166 @@ img {
 
 .about-me-wrapper .about-me-right button {
   margin-top: 50px;
+}
+
+/*********************************************/
+
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+}
+
+.navbar {
+  width: 100%;
+  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
+
+.navbar .menu-items {
+  display: flex;
+}
+
+.navbar .nav-container li {
+  list-style: none;
+}
+
+.navbar .nav-container a {
+  text-decoration: none;
+  color: #082629;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.7rem;
+}
+
+.navbar .nav-container a:hover{
+    font-weight: bolder;
+}
+
+.nav-container {
+  display: block;
+  position: relative;
+  height: 60px;
+}
+
+.nav-container .checkbox {
+  position: absolute;
+  display: block;
+  height: 32px;
+  width: 32px;
+  top: 20px;
+  right: 50px;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.nav-container .hamburger-lines {
+  display: block;
+  height: 26px;
+  width: 32px;
+  position: absolute;
+  top: 17px;
+  right: 50px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-container .hamburger-lines .line {
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 20px;
+  /* background: #0e2431; */
+}
+
+/* :root {
+  --darkSalmon: #E49678;
+  --darkJungleGreen: #082629;
+  --midnightGreen: #125B62;
+  --middleBlueGreen: #81C6BF;
+  --azureXwebColor:#D9E9E9;
+}  */
+
+.nav-container .hamburger-lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+  background: #082629;
+}
+
+.nav-container .hamburger-lines .line2 {
+  transition: transform 0.2s ease-in-out;
+  background: #125B62;
+}
+
+.nav-container .hamburger-lines .line3 {
+  transition: transform 0.2s ease-in-out;
+  background: #81C6BF;
+}
+
+.nav-container .hamburger-lines .line4 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+  background: #E49678;
+}
+
+.navbar .menu-items {
+  padding-top: 120px;
+  background-color: #81C6BF;
+  /* box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5); */
+  height: 100vh;
+  width: 100%;
+  transform: translate(150%);
+  display: flex;
+  flex-direction: column;
+  /* margin-left: -40px; */
+  padding-left: 50p6x;
+  transition: transform 0.75s ease-in-out;
+  text-align: center;
+}
+
+.navbar .menu-items li {
+  margin-bottom: 1.2rem;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.navbar .logo img{
+
+  margin: 5px 0 0 50px;
+  }
+
+.nav-container input[type="checkbox"]:checked ~ .menu-items {
+  transform: translateX(0);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+  transform: scaleY(0);
+}
+
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line4 {
+  transform: rotate(-45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .logo{
+  display: none;
 }
